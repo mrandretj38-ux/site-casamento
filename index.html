@@ -21,113 +21,6 @@ body {
     color: #333;
 }
 
-/* CARROSSEL */
-.carrossel {
-    position: relative;
-    max-width: 700px;
-    margin: 40px auto 15px;
-}
-
-.carrossel img {
-    width: 100%;
-    display: none;
-    border-radius: 10px;
-}
-
-.carrossel img.ativa {
-    display: block;
-}
-
-.carrossel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    border: none;
-    font-size: 28px;
-    padding: 10px 16px;
-    cursor: pointer;
-    border-radius: 50%;
-}
-
-.carrossel-btn.esq { left: -20px; }
-.carrossel-btn.dir { right: -20px; }
-
-/* MINIATURAS */
-.carrossel-miniaturas {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    overflow-x: auto;
-    padding-bottom: 10px;
-}
-
-.carrossel-miniaturas img {
-    width: 70px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 6px;
-    opacity: 0.6;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.carrossel-miniaturas img.ativa {
-    opacity: 1;
-    border: 2px solid #b2955f;
-}
-/* LOCAL DA CERIMÔNIA */
-.local-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-    margin-top: 40px;
-}
-
-.local-info {
-    text-align: left;
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-.local-info strong {
-    color: #b2955f;
-}
-
-.local-info p {
-    margin-bottom: 12px;
-}
-
-.local-mapa {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 25px;
-    background-color: #b2955f;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 25px;
-    font-weight: bold;
-}
-
-.local-img img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-/* RESPONSIVO */
-@media (max-width: 768px) {
-    .local-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .local-info {
-        text-align: center;
-    }
-}
-
 /* IMAGEM PRINCIPAL */
 .hero {
     height: 100vh;
@@ -160,6 +53,7 @@ nav {
     background: #fff;
     flex-wrap: wrap;
 }
+
 
 nav a {
     text-decoration: none;
@@ -280,101 +174,20 @@ footer {
 </header>
 
 <nav>
-    <a href="#data">Contagem Regressiva</a>
-    <a href="#local">Local da Cerimônia</a>
-    <a href="#festa">Local da Festa</a>
+    <a href="#data">Nossa Data</a>
     <a href="#presentes">Lista de Presentes</a>
     <a href="#confirmacao">Confirmação</a>
     <a href="#momentos">Nossos Momentos</a>
 </nav>
 
-<!-- DATA -->
+<!-- Data -->
 <section id="data">
-    <h2>Contagem Regressiva</h2>
+    <h2>Nossa Data</h2>
     <p>Estamos contando os dias para celebrar com você.</p>
     <div class="countdown" id="contador"></div>
 </section>
 
-<!-- LOCAL -->
-<section id="local">
-    <h2>Local da Cerimônia</h2>
-
-    <div class="local-container">
-
-        <!-- INFORMAÇÕES -->
-        <div class="local-info">
-            <p><strong>Endereço:</strong></p>
-            <p>
-                R. Luiz Roberto dos Santos, 327<br>
-                Lotes 01 e 02 – Quadra 11<br>
-                Vila Erminda<br>
-                Peruíbe – SP<br>
-                CEP 11776-874
-            </p>
-
-            <p><strong>Data e horário:</strong></p>
-            <p>
-                Sábado • 05 de setembro de 2026<br>
-                Início às <strong>16:00</strong>
-            </p>
-
-            <a
-              class="local-mapa"
-              href="https://www.google.com/maps/search/?api=1&query=R.+Luiz+Roberto+dos+Santos,+327+Peruíbe+SP"
-              target="_blank"
-              rel="noopener noreferrer">
-              Ver no Google Maps
-            </a>
-        </div>
-
-        <!-- IMAGEM -->
-        <div class="local-img">
-            <img src="Salão-Reino.jpg" alt="Local da cerimônia">
-        </div>
-
-    </div>
-</section>
-
-<!-- FESTA -->
-<section id="festa">
-    <h2>Local da Festa</h2>
-
-    <div class="local-container">
-
-        <!-- INFORMAÇÕES -->
-        <div class="local-info">
-            <p><strong>Endereço:</strong></p>
-            <p>
-                Âncora Peruíbe Hotel<br>
-                Av. Gov. Mário Covas Júnior, 4964<br>
-                Balneário Três Marias<br>
-                Peruíbe – SP<br>
-                CEP 11772-302
-            </p>
-
-            <p><strong>Data e horário:</strong></p>
-            <p>
-                Sábado • 05 de setembro de 2026<br>
-                Após a cerimônia
-            </p>
-
-            <a 
-              class="local-mapa" 
-              href="https://www.google.com/maps/search/?api=1&query=Âncora+Peruíbe+Hotel+Av.+Gov.+Mário+Covas+Júnior+4964+Peruíbe+SP"
-              target="_blank">
-              Ver no Google Maps
-            </a>
-        </div>
-
-        <!-- IMAGEM DO LOCAL -->
-        <div class="local-img">
-            <img src="Festa.jpg" alt="Local da festa - Âncora Peruíbe Hotel">
-        </div>
-
-    </div>
-</section>
-
-<!-- PRESENTES -->
+<!-- Presentes -->
 <section id="presentes">
     <h2>Lista de Presentes</h2>
     <p>Você pode escolher um presente simbólico para nos ajudar a começar essa nova fase ❤️</p>
@@ -434,25 +247,20 @@ footer {
 <!-- CONFIRMAÇÃO -->
 <section id="confirmacao">
     <h2>Confirmação de Presença</h2>
-    <p>
-        Ficaremos muito felizes em saber se você poderá estar conosco
-        nesse dia tão especial.
-    </p>
+    <p>Ficaremos muito felizes em saber se você poderá estar conosco nesse dia tão especial.</p>
 
-    <!-- TROQUE O NÚMERO DO WHATSAPP ABAIXO -->
     <a class="whatsapp-btn"
        href="https://wa.me/5515981523271?text=Olá!%20Gostaria%20de%20confirmar%20minha%20presença%20no%20casamento."
        target="_blank">
-       Confirmar pelo WhatsApp
+        Confirmar pelo WhatsApp
     </a>
-
 </section>
 
+<!-- Momentos -->
 <section id="momentos">
     <h2>Nossos Momentos</h2>
-
     <div class="galeria">
-        <img src="foto1.jpg" class="ativa">
+        <img src="foto1.jpg">
         <img src="foto2.jpg">
         <img src="foto3.jpg">
         <img src="foto4.jpg">
@@ -462,15 +270,7 @@ footer {
         <img src="foto8.jpg">
         <img src="foto9.jpg">
         <img src="foto10.jpg">
-        <img src="foto11.jpg">
-        <img src="foto12.jpg">
-        <img src="foto13.jpg">
-        <img src="foto14.jpg">
-        <img src="foto15.jpg">
-        <img src="foto16.jpg">
-        
     </div>
-
 </section>
 
 <footer>
@@ -490,39 +290,5 @@ setInterval(() => {
     contador.innerHTML = `Faltam ${dias} dias, ${horas} horas e ${minutos} minutos`;
 }, 1000);
 </script>
-
-<script>
-let indiceAtual = 0;
-const slides = document.querySelectorAll(".carrossel img");
-const miniaturas = document.querySelectorAll(".carrossel-miniaturas img");
-
-function atualizarSlide(index) {
-    slides.forEach(slide => slide.classList.remove("ativa"));
-    miniaturas.forEach(thumb => thumb.classList.remove("ativa"));
-
-    slides[index].classList.add("ativa");
-    miniaturas[index].classList.add("ativa");
-
-    indiceAtual = index;
-}
-
-function avancarSlide() {
-    let novo = (indiceAtual + 1) % slides.length;
-    atualizarSlide(novo);
-}
-
-function voltarSlide() {
-    let novo = (indiceAtual - 1 + slides.length) % slides.length;
-    atualizarSlide(novo);
-}
-
-function irParaSlide(index) {
-    atualizarSlide(index);
-}
-
-/* automático */
-setInterval(avancarSlide, 4000);
-</script>
-
 </body>
 </html>
