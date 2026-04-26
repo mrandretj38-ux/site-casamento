@@ -211,9 +211,13 @@ h2 {
     box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
 
-.presente img {
-    width: 100%;
-    border-radius: 6px;
+@media (max-width: 600px) {
+  .presente img {
+    width: 70%;
+    max-width: 160px;
+    margin: 0 auto 10px;
+    display: block;
+  }
 }
 
 .presente h3 {
@@ -232,7 +236,7 @@ h2 {
     font-weight: bold;
     color: #b2955f;
 }
-
+    
 /* GALERIA */
 .galeria {
     display: grid;
