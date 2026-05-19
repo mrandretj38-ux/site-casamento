@@ -30,7 +30,6 @@ body {
 
 .carrossel img {
     width: 100%;
-    height: auto;
     display: none;
     border-radius: 10px;
 }
@@ -77,44 +76,6 @@ body {
 .carrossel-miniaturas img.ativa {
     opacity: 1;
     border: 2px solid #b2955f;
-}
-/* LOCAL DA CERIMÔNIA */
-.local-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-    margin-top: 40px;
-}
-
-.local-info {
-    text-align: left;
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-.local-info strong {
-    color: #b2955f;
-}
-
-.local-info p {
-    margin-bottom: 12px;
-}
-
-.local-mapa {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 25px;
-    background-color: #b2955f;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 25px;
-    font-weight: bold;
-}
-
-.local-img img {
-    width: 100%;
-    border-radius: 10px;
 }
 
 /* RESPONSIVO */
@@ -196,38 +157,334 @@ h2 {
 }
 
 /* PRESENTES */
-@media (max-width: 600px) {
-  .presentes-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
-
-  .presente {
-    padding: 10px;
-  }
-
-  .presente img {
-    width: 80%;
-    max-width: 140px;
-    margin: 0 auto 10px;
-    display: block;
-  }
-
-  .presente h3 {
-    font-size: 0.95rem;
-  }
-
-  .presente p {
-    font-size: 0.85rem;
-  }
+.presentes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
 }
+
+.btn-presentear {
+    margin-top: 12px;
+    padding: 10px 20px;
+    border-radius: 22px;
+    border: none;
+    background: #b2955f;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-presentear:hover {
+    background: #9f8148;
+}
+
+
+.presente {
+    background: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.presente:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.presente img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+.presente h3 {
+    margin: 15px 0 5px;
+    font-size: 1.1rem;
+}
+
+.presente p {
+    font-size: 0.95rem;
+    color: #666;
+}
+
 .presente span {
     display: block;
     margin-top: 10px;
     font-weight: bold;
     color: #b2955f;
 }
-    
+/* CONTROLES DOS PRESENTES (VER MAIS / VER MENOS) */
+.presentes-controles{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-top: 40px;
+  flex-wrap: nowrap; /* PC: não quebrar linha */
+}
+
+.presentes-btn{
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  background-color: #b2955f;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap; /* evita quebrar o texto do botão */
+}
+
+.presentes-btn:disabled{
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* CELULAR: empilha (fica mais confortável no toque) */
+@media (max-width: 600px){
+  .presentes-controles{
+    flex-direction: column;
+      }
+
+  .presentes-btn{
+    width: 100%;
+    max-width: 260px;
+  }
+}
+
+.pix-box {
+  margin-top: 35px;
+  padding: 30px 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pix-texto {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.pix-chave {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.pix-chave span {
+  font-size: 1.1rem;
+  color: #b2955f;
+}
+
+.pix-btn {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 25px;
+  background-color: #b2955f;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.pix-btn:hover {
+  background-color: #9f8148;
+}
+
+.pix-qr {
+  margin-top: 25px;
+}
+
+.pix-qr img {
+  width: 180px;
+  border-radius: 12px;
+  border: 4px solid #f3f1ed;
+  padding: 10px;
+  background: #fff;
+}
+
+.pix-qr-texto {
+  font-size: 0.9rem;
+  margin-top: 8px;
+  color: #666;
+}
+
+.carrinho {
+  position: fixed;
+  right: 20px;
+  bottom: 90px;
+  width: 300px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  padding: 20px;
+  z-index: 999;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.carrinho.fechado {
+  transform: translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.carrinho h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.carrinho ul {
+  list-style: none;
+  max-height: 180px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding: 0;
+ }
+
+.carrinho li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.carrinho li button {
+  background: transparent;
+  border: none;
+  color: #c00;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.total {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.carrinho-toggle {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: #b2955f;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 18px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.carrinho-toggle span {
+  background: #fff;
+  color: #b2955f;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-left: 6px;
+  font-size: 0.9rem;
+}
+.carrinho-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.carrinho-overlay.fechado {
+  display: none;
+}
+
+.carrinho-modal {
+  background: #fff;
+  width: 90%;
+  max-width: 600px;
+  padding: 30px;
+  border-radius: 14px;
+}
+
+.carrinho-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-weight: bold;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+#listaCarrinho li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0;
+}
+
+#listaCarrinho strong {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+#listaCarrinho button {
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+}
+
+.carrinho-footer {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.carrinho-botoes {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.carrinho-botoes button {
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  background: #777;
+  color: #fff;
+}
+
+.carrinho-botoes .finalizar {
+  background: #d96b85;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.carrinho-pulse {
+  animation: pulse 0.4s ease;
+}
+
+.carrinho-toggle span {
+  animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.5); }
+  100% { transform: scale(1); }
+}
+
 /* GALERIA */
 .galeria {
     display: grid;
@@ -266,6 +523,83 @@ footer {
         font-size: 3rem;
     }
 }
+
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #333;
+  color: #fff;
+  padding: 14px 22px;
+  border-radius: 25px;
+  font-weight: 500;
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 3000;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.item-voando {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  z-index: 3000;
+  transition: all 0.8s cubic-bezier(0.5, -0.5, 0.5, 1.5);
+  pointer-events: none;
+}
+
+.recados-box {
+  max-width: 500px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.recados-box input,
+.recados-box textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.recados-box button {
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  background: #b2955f;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.lista-recados {
+  margin-top: 40px;
+  display: grid;
+  gap: 15px;
+}
+
+.recado {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.recado strong {
+  color: #b2955f;
+  display: block;
+  margin-bottom: 5px;
+}
+
 </style>
 </head>
 <body>
@@ -277,11 +611,10 @@ footer {
 
 <nav>
     <a href="#data">Contagem Regressiva</a>
-    <a href="#local">Local da Cerimônia</a>
-    <a href="#festa">Local da Festa</a>
     <a href="#presentes">Lista de Presentes</a>
-    <a href="#confirmacao">Confirmação</a>
     <a href="#momentos">Nossos Momentos</a>
+    <a href="#recados">Recados</a>
+
 </nav>
 
 <!-- DATA -->
@@ -291,89 +624,31 @@ footer {
     <div class="countdown" id="contador"></div>
 </section>
 
-<!-- LOCAL -->
-<section id="local">
-    <h2>Local da Cerimônia</h2>
-
-    <div class="local-container">
-
-        <!-- INFORMAÇÕES -->
-        <div class="local-info">
-            <p><strong>Endereço:</strong></p>
-            <p>
-                R. Luiz Roberto dos Santos, 327<br>
-                Lotes 01 e 02 – Quadra 11<br>
-                Vila Erminda<br>
-                Peruíbe – SP<br>
-                CEP 11776-874
-            </p>
-
-            <p><strong>Data e horário:</strong></p>
-            <p>
-                Sábado • 05 de setembro de 2026<br>
-                Início às <strong>16:00</strong>
-            </p>
-
-            <a
-              class="local-mapa"
-              href="https://www.google.com/maps/search/?api=1&query=R.+Luiz+Roberto+dos+Santos,+327+Peruíbe+SP"
-              target="_blank"
-              rel="noopener noreferrer">
-              Ver no Google Maps
-            </a>
-        </div>
-
-        <!-- IMAGEM -->
-        <div class="local-img">
-            <img src="Salão-Reino.jpg" alt="Local da cerimônia">
-        </div>
-
-    </div>
-</section>
-
-<!-- FESTA -->
-<section id="festa">
-    <h2>Local da Festa</h2>
-
-    <div class="local-container">
-
-        <!-- INFORMAÇÕES -->
-        <div class="local-info">
-            <p><strong>Endereço:</strong></p>
-            <p>
-                Âncora Peruíbe Hotel<br>
-                Av. Gov. Mário Covas Júnior, 4964<br>
-                Balneário Três Marias<br>
-                Peruíbe – SP<br>
-                CEP 11772-302
-            </p>
-
-            <p><strong>Data e horário:</strong></p>
-            <p>
-                Sábado • 05 de setembro de 2026<br>
-                Após a cerimônia
-            </p>
-
-            <a 
-              class="local-mapa" 
-              href="https://www.google.com/maps/search/?api=1&query=Âncora+Peruíbe+Hotel+Av.+Gov.+Mário+Covas+Júnior+4964+Peruíbe+SP"
-              target="_blank">
-              Ver no Google Maps
-            </a>
-        </div>
-
-        <!-- IMAGEM DO LOCAL -->
-        <div class="local-img">
-            <img src="Festa.jpg" alt="Local da festa - Âncora Peruíbe Hotel">
-        </div>
-
-    </div>
-</section>
-
 <!-- PRESENTES -->
 <section id="presentes">
     <h2>Lista de Presentes</h2>
-    <p>Você pode escolher um presente simbólico para nos ajudar a começar essa nova fase ❤️</p>
+    <p class="pix-texto">
+      Nosso maior presente é celebrar esse momento com você.<br>
+      Mas, se quiser nos ajudar a começar essa nova fase, reunimos aqui algumas sugestões
+      ou você pode contribuir via Pix 💕
+</p>
+
+<div class="pix-box">
+  <p class="pix-chave">
+    <strong>Chave Pix:</strong><br>
+    <span id="pixChave">15981523271</span><br>
+    André Barbosa da Silva – Nubank
+  </p>
+
+  <button class="pix-btn" onclick="copiarPix(this)">
+    Copiar chave Pix
+  </button>
+
+  <div class="pix-qr">
+    <img src="pix-qrcode.png" alt="QR Code Pix">
+    <p class="pix-qr-texto">Ou escaneie o QR Code</p>
+  </div>
+</div>
 
     <div class="presentes-grid">
         <div class="presente">
@@ -381,6 +656,11 @@ footer {
             <h3>Conjunto de Panelas</h3>
             <p>Para preparar muitos momentos especiais.</p>
             <span>R$ 600,00</span>
+
+          <button class="btn-presentear"
+           onclick="adicionarAoCarrinho('Conjunto de Panelas', 600, this)">Presentear
+          </button>
+
         </div>
 
         <div class="presente">
@@ -388,6 +668,10 @@ footer {
             <h3>Cama Box</h3>
             <p>Conforto para nossos dias e noites.</p>
             <span>R$ 150,00</span>
+
+           <button class="btn-presentear"
+            onclick="adicionarAoCarrinho('Cama Box', 150, this)">Presentear
+           </button>
         </div>
 
         <div class="presente">
@@ -395,6 +679,10 @@ footer {
             <h3>Cooktop</h3>
             <p>Modernidade e praticidade na cozinha.</p>
             <span>R$ 300,00</span>
+
+          <button class="btn-presentear"
+           onclick="adicionarAoCarrinho('Cooktop', 300, this)">Presentear
+          </button>
         </div>
 
         <div class="presente">
@@ -402,6 +690,11 @@ footer {
             <h3>Micro-ondas</h3>
             <p>Mais facilidade no dia a dia.</p>
             <span>R$ 450,00</span>
+
+
+            <button class="btn-presentear"
+             onclick="adicionarAoCarrinho('Micro-ondas', 450, this)">Presentear
+            </button>
         </div>
 
         <div class="presente">
@@ -409,6 +702,11 @@ footer {
             <h3>Forno Elétrico</h3>
             <p>Para receitas feitas com carinho.</p>
             <span>R$ 400,00</span>
+
+
+            <button class="btn-presentear"
+             onclick="adicionarAoCarrinho('Forno Elétricos', 400, this)">Presentear
+            </button>
         </div>
 
         <div class="presente">
@@ -416,6 +714,10 @@ footer {
             <h3>Geladeira</h3>
             <p>Essencial para nosso novo lar.</p>
             <span>R$ 4.000,00</span>
+       
+            <button class="btn-presentear"
+             onclick="adicionarAoCarrinho('Geladeira', 4000, this)">Presentear
+            </button>
         </div>
 
         <div class="presente">
@@ -423,72 +725,379 @@ footer {
             <h3>Jogo de Toalhas</h3>
             <p>Detalhes que tornam a casa mais aconchegante.</p>
             <span>R$ 150,00</span>
+
+            <button class="btn-presentear"
+             onclick="adicionarAoCarrinho('Jogo de Toalhas', 150, this)">Presentear
+            </button>
         </div>
+
+<div class="presente">
+    <img src="image (7).png">
+    <h3>Liquidificador Oster</h3>
+    <p>Para preparar nossas bebidas favoritas.</p>
+    <span>R$ 489,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Liquidificador Oster', 489, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (8).png">
+    <h3>Máquina de Café Wallita</h3>
+    <p>Para começar o dia com um bom café.</p>
+    <span>R$ 3499,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Máquina de Café Wallita', 3499, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (9).png">
+    <h3>Máquina de Café Italiana</h3>
+    <p>Clássico para um café especial.</p>
+    <span>R$ 65,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Máquina de Café Italiana', 65, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (10).png">
+    <h3>Moedor de Café</h3>
+    <p>Café moído na hora é ainda melhor.</p>
+    <span>R$ 150,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Moedor de Café', 150, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (11).png">
+    <h3>Panela de Arroz Oster</h3>
+    <p>Praticidade no dia a dia.</p>
+    <span>R$ 180,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Panela de Arroz Oster', 180, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (12).png">
+    <h3>Panela de Pressão</h3>
+    <p>Essencial para refeições rápidas.</p>
+    <span>R$ 429,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Panela de Pressão', 429, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (13).png">
+    <h3>Faqueiro</h3>
+    <p>Elegância nas refeições.</p>
+    <span>R$ 220,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Faqueiro', 220, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (14).png">
+    <h3>Pedra de Granito</h3>
+    <p>Acabamento perfeito para cozinha.</p>
+    <span>R$ 1200,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Pedra de Granito', 1200, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (15).png">
+    <h3>Armário de Cozinha</h3>
+    <p>Organização e praticidade.</p>
+    <span>R$ 4000,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Armário de Cozinha', 4000, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (16).png">
+    <h3>Mesa de Jantar</h3>
+    <p>Para reunir a família.</p>
+    <span>R$ 1600,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Mesa de Jantar', 1600, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (17).png">
+    <h3>Sofá</h3>
+    <p>Conforto para receber visitas.</p>
+    <span>R$ 1200,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Sofá', 1200, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (18).png">
+    <h3>TV 50"</h3>
+    <p>Momentos de lazer juntos.</p>
+    <span>R$ 2100,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('TV 50', 2100, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (19).png">
+    <h3>Painel + Rack TV</h3>
+    <p>Ambiente moderno e organizado.</p>
+    <span>R$ 2000,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Painel e Rack TV', 2000, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (20).png">
+    <h3>Porcelanato</h3>
+    <p>Acabamento elegante para o lar.</p>
+    <span>R$ 3400,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Porcelanato', 3400, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (21).png">
+    <h3>Lua de Mel</h3>
+    <p>Uma viagem inesquecível.</p>
+    <span>R$ 4500,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Lua de Mel', 4500, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (22).png">
+    <h3>Edredom</h3>
+    <p>Mais conforto para nossas noites.</p>
+    <span>R$ 140,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Edredom', 140, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (23).png">
+    <h3>Jogo de Lençol</h3>
+    <p>Conforto e aconchego.</p>
+    <span>R$ 180,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Jogo de Lençol', 180, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (24).png">
+    <h3>Pote de Vidro</h3>
+    <p>Organização na cozinha.</p>
+    <span>R$ 80,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Pote de Vidro', 80, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (25).png">
+    <h3>Jogo de Utensílios</h3>
+    <p>Itens essenciais para cozinhar.</p>
+    <span>R$ 60,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Jogo de Utensílios', 60, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (26).png">
+    <h3>Jogo de Copos</h3>
+    <p>Para brindarmos juntos.</p>
+    <span>R$ 35,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Jogo de Copos', 35, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (27).png">
+    <h3>Jogo de Pratos</h3>
+    <p>Para refeições especiais.</p>
+    <span>R$ 350,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Jogo de Pratos', 350, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (28).png">
+    <h3>Guarda-Roupas</h3>
+    <p>Espaço para organizar tudo.</p>
+    <span>R$ 1800,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Guarda-Roupas', 1800, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (29).png">
+    <h3>Gabinete de Banheiro</h3>
+    <p>Funcionalidade no ambiente.</p>
+    <span>R$ 500,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Gabinete de Banheiro', 500, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (30).png">
+    <h3>Chuveiro</h3>
+    <p>Relaxamento garantido.</p>
+    <span>R$ 300,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Chuveiro', 300, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (31).png">
+    <h3>Espelho de Banheiro</h3>
+    <p>Detalhes que fazem diferença.</p>
+    <span>R$ 100,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Espelho de Banheiro', 100, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (32).png">
+    <h3>Porta de Banheiro</h3>
+    <p>Acabamento essencial.</p>
+    <span>R$ 250,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Porta de Banheiro', 250, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (33).png">
+    <h3>Tapete Capacho</h3>
+    <p>Para dar boas-vindas com charme.</p>
+    <span>R$ 50,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Tapete Capacho', 50, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (34).png">
+    <h3>Quadro Decorativo</h3>
+    <p>Para deixar nosso lar ainda mais bonito.</p>
+    <span>R$ 45,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Quadro Decorativo', 45, this)">Presentear
+    </button>
+</div>
+
+<div class="presente">
+    <img src="image (35).png">
+    <h3>Planta Artificial</h3>
+    <p>Um toque de verde na decoração.</p>
+    <span>R$ 30,00</span>
+    <button class="btn-presentear"
+        onclick="adicionarAoCarrinho('Planta Artificial', 30, this)">Presentear
+    </button>
+</div>
+
+  </div>
+  <!-- BOTÕES VER MAIS / VER MENOS -->
+    <div class="presentes-controles">
+      <button type="button" id="btnMenos" class="presentes-btn" onclick="mostrarMenosPresentes()">Ver menos</button>
+      <button type="button" id="btnMais" class="presentes-btn" onclick="mostrarMaisPresentes()">Ver mais</button>
     </div>
-</section>
-
-<!-- CONFIRMAÇÃO -->
-<section id="confirmacao">
-    <h2>Confirmação de Presença</h2>
-    <p>
-        Ficaremos muito felizes em saber se você poderá estar conosco
-        nesse dia tão especial.
-    </p>
-
-    <!-- TROQUE O NÚMERO DO WHATSAPP ABAIXO -->
-    <a class="whatsapp-btn"
-       href="https://wa.me/5515981523271?text=Olá!%20Gostaria%20de%20confirmar%20minha%20presença%20no%20casamento."
-       target="_blank">
-       Confirmar pelo WhatsApp
-    </a>
-
 </section>
 
 <section id="momentos">
     <h2>Nossos Momentos</h2>
 
     <div class="carrossel">
-        <img src="Foto1.jpg" class="ativa" alt="Momento 1">
-        <img src="Foto2.jpg" alt="Momento 2">
-        <img src="Foto3.jpg" alt="Momento 3">
-        <img src="Foto4.jpg" alt="Momento 4">
-        <img src="Foto5.jpg" alt="Momento 5">
-        <img src="Foto6.jpg" alt="Momento 6">
-        <img src="Foto7.jpg" alt="Momento 7">
-        <img src="Foto8.jpg" alt="Momento 8">
-        <img src="Foto9.jpg" alt="Momento 9">
-        <img src="Foto10.jpg" alt="Momento 10">
-        <img src="Foto11.jpg" alt="Momento 11">
-        <img src="Foto12.jpg" alt="Momento 12">
-        <img src="Foto13.jpg" alt="Momento 13">
-        <img src="Foto14.jpg" alt="Momento 14">
-        <img src="Foto15.jpg" alt="Momento 15">
-        <img src="Foto16.jpg" alt="Momento 16">
+        <img src="foto1.jpg" class="ativa"> 
+        <img src="foto2.jpg">
+        <img src="foto3.jpg">
+        <img src="foto4.jpg"> 
+        <img src="foto5.jpg"> 
+        <img src="foto6.jpg"> 
+        <img src="foto7.jpg">
+        <img src="foto8.jpg">
+        <img src="foto9.jpg">
+        <img src="foto10.jpg">
+        <img src="foto11.jpg">
+        <img src="foto12.jpg">
+        <img src="foto13.jpg">
+        <img src="foto14.jpg">
+        <img src="foto15.jpg">
+        <img src="foto16.jpg">
 
         <button class="carrossel-btn esq" type="button" onclick="voltarSlide()">‹</button>
         <button class="carrossel-btn dir" type="button" onclick="avancarSlide()">›</button>
     </div>
 
     <div class="carrossel-miniaturas">
-        <img src="Foto1.jpg" class="ativa" alt="Miniatura 1" onclick="irParaSlide(0)">
-        <img src="Foto2.jpg" alt="Miniatura 2" onclick="irParaSlide(1)">
-        <img src="Foto3.jpg" alt="Miniatura 3" onclick="irParaSlide(2)">
-        <img src="Foto4.jpg" alt="Miniatura 4" onclick="irParaSlide(3)">
-        <img src="Foto5.jpg" alt="Miniatura 5" onclick="irParaSlide(4)">
-        <img src="Foto6.jpg" alt="Miniatura 6" onclick="irParaSlide(5)">
-        <img src="Foto7.jpg" alt="Miniatura 7" onclick="irParaSlide(6)">
-        <img src="Foto8.jpg" alt="Miniatura 8" onclick="irParaSlide(7)">
-        <img src="Foto9.jpg" alt="Miniatura 9" onclick="irParaSlide(8)">
-        <img src="Foto10.jpg" alt="Miniatura 10" onclick="irParaSlide(9)">
-        <img src="Foto11.jpg" alt="Miniatura 11" onclick="irParaSlide(10)">
-        <img src="Foto12.jpg" alt="Miniatura 12" onclick="irParaSlide(11)">
-        <img src="Foto13.jpg" alt="Miniatura 13" onclick="irParaSlide(12)">
-        <img src="Foto14.jpg" alt="Miniatura 14" onclick="irParaSlide(13)">
-        <img src="Foto15.jpg" alt="Miniatura 15" onclick="irParaSlide(14)">
-        <img src="Foto16.jpg" alt="Miniatura 16" onclick="irParaSlide(15)">
+        <img src="foto1.jpg" class="ativa" alt="Miniatura 1" onclick="irParaSlide(0)">
+        <img src="foto2.jpg" alt="Miniatura 2" onclick="irParaSlide(1)">
+        <img src="foto3.jpg" alt="Miniatura 3" onclick="irParaSlide(2)">
+        <img src="foto4.jpg" alt="Miniatura 4" onclick="irParaSlide(3)">
+        <img src="foto5.jpg" alt="Miniatura 5" onclick="irParaSlide(4)">
+        <img src="foto6.jpg" alt="Miniatura 6" onclick="irParaSlide(5)">
+        <img src="foto7.jpg" alt="Miniatura 7" onclick="irParaSlide(6)">
+        <img src="foto8.jpg" alt="Miniatura 8" onclick="irParaSlide(7)">
+        <img src="foto9.jpg" alt="Miniatura 9" onclick="irParaSlide(8)">
+        <img src="foto10.jpg" alt="Miniatura 10" onclick="irParaSlide(9)">
+        <img src="foto11.jpg" alt="Miniatura 11" onclick="irParaSlide(10)">
+        <img src="foto12.jpg" alt="Miniatura 12" onclick="irParaSlide(11)">
+        <img src="foto13.jpg" alt="Miniatura 13" onclick="irParaSlide(12)">
+        <img src="foto14.jpg" alt="Miniatura 14" onclick="irParaSlide(13)">
+        <img src="foto15.jpg" alt="Miniatura 15" onclick="irParaSlide(14)">
+        <img src="foto16.jpg" alt="Miniatura 16" onclick="irParaSlide(15)">
     </div>
 </section>
-``
+
+<section id="recados">
+  <h2>Recados dos convidados</h2>
+  <p>Deixe uma mensagem especial para nós ❤️</p>
+
+  <div class="recados-box">
+    
+    <input type="text" id="nomeRecado" placeholder="Seu nome">
+    
+    <textarea id="mensagemRecado" placeholder="Escreva seu recado..."></textarea>
+    
+    <button onclick="adicionarRecado()">Enviar recado</button>
+
+  </div>
+
+  <div id="listaRecados" class="lista-recados"></div>
+
+  <div style="margin-top:20px;">
+  <button id="btnVerMais" onclick="verMaisRecados()">
+    Ver mais recados
+
+  </button>
+</div>
+
+</section>
 
 <footer>
     Carla & André • 2026
@@ -539,6 +1148,361 @@ function irParaSlide(index) {
 
 /* automático */
 setInterval(avancarSlide, 4000);
+</script>
+
+<script>
+  // MOSTRAR PRESENTES DE 4 EM 4
+  const passoPresentes = 4;
+  let visiveisPresentes = passoPresentes;
+
+  function atualizarPresentes() {
+    const itens = document.querySelectorAll("#presentes .presentes-grid .presente");
+    const btnMais = document.getElementById("btnMais");
+    const btnMenos = document.getElementById("btnMenos");
+
+    itens.forEach((item, index) => {
+      item.style.display = (index < visiveisPresentes) ? "block" : "none";
+    });
+
+    // habilita/desabilita botões
+    btnMenos.disabled = visiveisPresentes <= passoPresentes;
+    btnMais.disabled = visiveisPresentes >= itens.length;
+  }
+
+  function mostrarMaisPresentes() {
+    const itens = document.querySelectorAll("#presentes .presentes-grid .presente");
+    visiveisPresentes = Math.min(visiveisPresentes + passoPresentes, itens.length);
+    atualizarPresentes();
+  }
+
+  function mostrarMenosPresentes() {
+    visiveisPresentes = Math.max(visiveisPresentes - passoPresentes, passoPresentes);
+    atualizarPresentes();
+
+    // opcional: volta a tela um pouco para não ficar "perdido" após esconder
+    document.getElementById("presentes").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  // inicializa quando carregar
+  document.addEventListener("DOMContentLoaded", atualizarPresentes);
+  document.addEventListener("DOMContentLoaded", () => {
+  let recadosVisiveis = 5;
+  mostrarRecados();
+});
+
+</script>
+
+<script>
+function copiarPix(botao) {
+  const chave = document.getElementById("pixChave").innerText;
+
+  navigator.clipboard.writeText(chave).then(() => {
+    const textoOriginal = botao.innerText;
+    const corOriginal = botao.style.backgroundColor;
+
+    botao.innerText = "Copiado ✅";
+    botao.style.backgroundColor = "#4CAF50";
+    botao.disabled = true;
+
+    setTimeout(() => {
+      botao.innerText = textoOriginal;
+      botao.style.backgroundColor = corOriginal || "#b2955f";
+      botao.disabled = false;
+    }, 2500);
+  });
+}
+</script>
+
+<div class="carrinho-overlay fechado" id="carrinhoOverlay">
+  <div class="carrinho-modal">
+    
+    <h3>Meu carrinho</h3>
+
+    <div class="carrinho-header">
+      <span>Descrição do presente</span>
+      <span>Valor</span>
+    </div>
+
+    <ul id="listaCarrinho"></ul>
+
+    <div class="carrinho-footer">
+      <p>Total: <strong id="totalCarrinho">R$ 0,00</strong></p>
+
+      <div class="carrinho-botoes">
+        <button onclick="toggleCarrinho()">Adicionar mais itens</button>
+        <button class="finalizar" onclick="finalizarCompra()">Finalizar compra</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+let carrinho = {};
+let total = 0;
+
+function adicionarAoCarrinho(nome, valor, botao) {
+
+  if (!carrinho[nome]) {
+    carrinho[nome] = { valor, quantidade: 1 };
+  } else {
+    carrinho[nome].quantidade++;
+  }
+
+  atualizarCarrinho();
+
+  // ✅ ANIMAÇÃO DO ITEM
+  const card = botao.closest(".presente");
+  const imagem = card.querySelector("img");
+  animarItem(imagem);
+
+  // ✅ TOAST BONITO
+  mostrarToast(`💝 Presente adicionado com carinho`);
+
+  // ✅ BOTÃO FEEDBACK
+  const textoOriginal = botao.innerText;
+  botao.innerText = "Adicionado ✅";
+  botao.style.background = "#4CAF50";
+
+  setTimeout(() => {
+    botao.innerText = textoOriginal;
+    botao.style.background = "#b2955f";
+  }, 1500);
+
+  // ✅ ANIMAÇÃO NO ÍCONE
+  const btnCarrinho = document.querySelector(".carrinho-toggle");
+  btnCarrinho.classList.add("carrinho-pulse");
+
+  setTimeout(() => {
+    btnCarrinho.classList.remove("carrinho-pulse");
+  }, 400);
+}
+
+localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const salvo = localStorage.getItem("carrinho");
+
+  if (salvo) {
+    carrinho = JSON.parse(salvo);
+    atualizarCarrinho();
+  }
+
+});
+
+function removerItem(nome) {
+  delete carrinho[nome];
+  atualizarCarrinho();
+}
+
+function atualizarCarrinho() {
+  const lista = document.getElementById("listaCarrinho");
+  const totalSpan = document.getElementById("totalCarrinho");
+  const contador = document.getElementById("contadorCarrinho");
+
+  lista.innerHTML = "";
+  total = 0;
+  let itens = 0;
+
+  for (let nome in carrinho) {
+    const item = carrinho[nome];
+    const subtotal = item.valor * item.quantidade;
+
+    total += subtotal;
+    itens += item.quantidade;
+
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+      ${item.quantidade}x ${nome} 		
+      <strong>R$ ${subtotal.toFixed(2)}</strong>
+      <button onclick="removerItem('${nome}')">Remover</button>
+    `;
+
+    lista.appendChild(li);
+  }
+
+  totalSpan.innerText = `R$ ${total.toFixed(2)}`;
+  contador.innerText = itens;
+}
+
+function finalizarCompra() {
+
+  if (total === 0) {
+    mostrarToast("Seu carrinho está vazio 😅");
+    return;
+  }
+
+  // 🎉 CONFETE
+  confetti({
+    particleCount: 150,
+    spread: 100,
+    origin: { y: 0.6 }
+  });
+
+  // 💍 mensagem bonita
+  mostrarToast("Obrigado pelo presente ❤️");
+
+  setTimeout(() => {
+    alert("Agora você será redirecionado para o pagamento");
+    
+    // 👉 LINK MERCADO PAGO AQUI
+    window.location.href = "link.mercadopago.com.br/listacasamentoca";
+  
+  }, 2000);
+}
+
+function mostrarToast(mensagem) {
+  const toast = document.getElementById("toast");
+
+  toast.innerText = mensagem;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2500);
+}
+
+function toggleCarrinho() { 
+  document.getElementById("carrinhoOverlay").classList.toggle("fechado"); 
+}
+
+function animarItem(imagemElemento) {
+
+  const carrinhoBtn = document.querySelector(".carrinho-toggle");
+  const rectImg = imagemElemento.getBoundingClientRect();
+  const rectCarrinho = carrinhoBtn.getBoundingClientRect();
+
+  const clone = imagemElemento.cloneNode(true);
+
+  clone.classList.add("item-voando");
+
+  clone.style.top = rectImg.top + "px";
+  clone.style.left = rectImg.left + "px";
+
+  document.body.appendChild(clone);
+
+  setTimeout(() => {
+    clone.style.top = rectCarrinho.top + "px";
+    clone.style.left = rectCarrinho.left + "px";
+    clone.style.width = "20px";
+    clone.style.height = "20px";
+    clone.style.opacity = "0.5";
+  }, 50);
+
+  setTimeout(() => {
+    clone.remove();
+  }, 900);
+}
+
+function adicionarRecado() {
+
+  const nome = document.getElementById("nomeRecado").value.trim();
+  const mensagem = document.getElementById("mensagemRecado").value.trim();
+
+  if (!nome || !mensagem) {
+    mostrarToast("Preencha nome e mensagem 😊");
+    return;
+  }
+
+  const recado = { nome, mensagem };
+
+  let recados = JSON.parse(localStorage.getItem("recados")) || [];
+
+  recados.push(recado);
+
+  localStorage.setItem("recados", JSON.stringify(recados));
+
+  mostrarRecados();
+
+  document.getElementById("nomeRecado").value = "";
+  document.getElementById("mensagemRecado").value = "";
+
+  mostrarToast("Recado enviado com carinho ❤️");
+}
+
+function mostrarRecados() {
+
+  const lista = document.getElementById("listaRecados");
+  lista.innerHTML = "";
+
+  const recados = JSON.parse(localStorage.getItem("recados")) || [];
+
+  const recadosInvertidos = recados.slice().reverse();
+
+  recadosInvertidos.slice(0, recadosVisiveis).forEach(r => {
+
+    const div = document.createElement("div");
+    div.classList.add("recado");
+
+    div.innerHTML = `
+      <strong>${r.nome}</strong>
+      <p>${r.mensagem}</p>
+    `;
+
+    lista.appendChild(div);
+  });
+
+  atualizarBotaoVerMais(recadosInvertidos.length);
+}
+
+function verMaisRecados() {
+  recadosVisiveis += 5;
+  mostrarRecados();
+}
+
+function atualizarBotaoVerMais(total) {
+  const botao = document.getElementById("btnVerMais");
+
+  if (recadosVisiveis >= total) {
+    botao.style.display = "none";
+  } else {
+    botao.style.display = "inline-block";
+  }
+}
+
+</script>
+
+<button class="carrinho-toggle" onclick="toggleCarrinho()">
+  🎁 <span id="contadorCarrinho">0</span>
+</button>
+
+<div id="toast" class="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const overlay = document.getElementById("carrinhoOverlay");
+  const modal = document.querySelector(".carrinho-modal");
+
+  // clicar fora → fecha
+  overlay.addEventListener("click", function () {
+    overlay.classList.add("fechado");
+  });
+
+  // clicar dentro → não fecha
+  modal.addEventListener("click", function (event) {
+    event.stopPropagation();
+  });
+
+  // tecla ESC → fecha
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      overlay.classList.add("fechado");
+    }
+  });
+
+});
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    document.getElementById("carrinhoOverlay").classList.add("fechado");
+  }
+});
 </script>
 
 </body>
