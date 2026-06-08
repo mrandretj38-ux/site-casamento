@@ -105,16 +105,24 @@ body {
 /* TEXTO APENAS NA PÁGINA PRINCIPAL */
 .hero-texto {
     font-family: 'Great Vibes', cursive;
-    font-size: clamp(3rem, 10vw, 8rem);
+    font-size: clamp(3rem, 10vw, 6rem);
     color: #ffffff;
     text-shadow: 0 4px 12px rgba(0,0,0,0.45);
     pointer-events: none;
     text-align: center;
     width: 100%;
     position: absolute;
-    top: 50%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+/* Ajuste especial para notebook/desktop */
+@media (min-width: 1024px) {
+    .hero-texto {
+        font-size: 6rem; /* menor para não cobrir o rosto */
+        top: 65%;        /* desce um pouco o texto */
+    }
 }
 
 /* MENU */
