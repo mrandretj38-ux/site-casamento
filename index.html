@@ -114,6 +114,8 @@ body {
     position: absolute;
 }
 
+
+
 /* Ajuste especial para notebook/desktop */
 @media (min-width: 512px) {
     .hero-texto {
@@ -127,7 +129,52 @@ body {
         top: 85%;        /* desce mais */
     }
 }
+/* Popup - Musica de inicio */
+.popup-musica {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
 
+.popup-conteudo {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.3rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.popup-conteudo button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Botão de mute */
+.mute-btn {
+    position: fixed;
+    bottom: 20px;
+    Left: 20px;
+    background: rgba(255,255,255,0.85);
+    border: none;
+    padding: 12px 18px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+}
 /* MENU */
 nav {
     display: flex;
@@ -620,6 +667,22 @@ footer {
 </style>
 </head>
 <body>
+
+    <!-- Musica tela de inicio -->
+<div id="popup-musica" class="popup-musica">
+    <div class="popup-conteudo">
+        <p>Deseja ouvir a música de fundo?</p>
+        <button id="btnSim">Sim</button>
+        <button id="btnNao">Não</button>
+    </div>
+</div>
+
+<audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mp3">
+</audio>
+
+
+<button id="botaoSom" class="mute-btn" style="display:none;">🔇 Som</button>
 
 <!-- PÁGINA PRINCIPAL -->
 <header class="hero">
@@ -1168,6 +1231,38 @@ function irParaSlide(index) {
 setInterval(avancarSlide, 4000);
 </script>
 
+<script>
+const musica = document.getElementById("musica");
+const popup = document.getElementById("popup-musica");
+const botaoSom = document.getElementById("botaoSom");
+
+document.getElementById("btnSim").addEventListener("click", () => {
+    musica.muted = false;
+    musica.play();
+    botaoSom.style.display = "block";
+    botaoSom.textContent = "🔊 Som ligado";
+    popup.style.display = "none";
+});
+
+document.getElementById("btnNao").addEventListener("click", () => {
+    musica.muted = true;
+    musica.play();
+    botaoSom.style.display = "block";
+    botaoSom.textContent = "🔇 Som desligado";
+    popup.style.display = "none";
+});
+
+botaoSom.addEventListener("click", () => {
+    if (musica.muted) {
+        musica.muted = false;
+        botaoSom.textContent = "🔊 Som ligado";
+    } else {
+        musica.muted = true;
+        botaoSom.textContent = "🔇 Som desligado";
+    }
+});
+</script>
+    
 <script>
   // MOSTRAR PRESENTES DE 4 EM 4
   const passoPresentes = 4;
