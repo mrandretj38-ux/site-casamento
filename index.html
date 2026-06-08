@@ -105,11 +105,16 @@ body {
 /* TEXTO APENAS NA PÁGINA PRINCIPAL */
 .hero-texto {
     font-family: 'Great Vibes', cursive;
-    font-size: 8.5rem;
+    font-size: clamp(3rem, 10vw, 8rem);
     color: #ffffff;
     text-shadow: 0 4px 12px rgba(0,0,0,0.45);
     pointer-events: none;
-    transform: translateY(360px);
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* MENU */
